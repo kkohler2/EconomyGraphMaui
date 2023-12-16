@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:contentviews="clr-namespace:EconomyGraph.Views.ContentViews;assembly=EconomyGraphMaui"
+             x:Class="EconomyGraphMauiTest.MainPage">
+
+    <StackLayout VerticalOptions="Start" Padding="0,50,0,0">
+        <Button Text="Hide Graph" Command="{Binding HideGraphCommand}" IsVisible="{Binding ShowHideButton}"/>
+        <contentviews:HorizontalBarGraphView GraphWidth="800" GraphHeight="400" ViewModel="{Binding HorizontalBarGraphViewModel}" IsVisible="{Binding HorizontalBarGraph}" />
+        <contentviews:LineGraphView GraphWidth="800" GraphHeight="400" ViewModel="{Binding LineGraphViewModel}" IsVisible="{Binding LineGraph}"/>
+        <contentviews:LineGraphView GraphWidth="800" GraphHeight="400" ViewModel="{Binding LineGraphLeftLabelViewModel}" IsVisible="{Binding LineGraphLeftLabel}"/>
+        <contentviews:LineGraphView GraphWidth="800" GraphHeight="400" ViewModel="{Binding LineGraphWithFootersViewModel}" IsVisible="{Binding LineGraphWithFooters}"/>
+        <contentviews:LineGraphView GraphWidth="800" GraphHeight="400" ViewModel="{Binding LineGraphWithMultiLineHeaderViewModel}" IsVisible="{Binding LineGraphWithMultiLineHeader}"/>
+        <contentviews:LineGraphView GraphWidth="800" GraphHeight="400" ViewModel="{Binding StepGraphViewModel}" IsVisible="{Binding StepGraph}"/>
+        <contentviews:BarGraphView GraphWidth="800" GraphHeight="400" ViewModel="{Binding BarGraphViewModel}" IsVisible="{Binding BarGraph}"/>
+        <contentviews:ShadedLineGraphView GraphWidth="1200" GraphHeight="400" ViewModel="{Binding ShadedLineGraphViewModel}" IsVisible="{Binding ShadedLineGraph}"/>
+        <contentviews:ShadedBarGraphView GraphWidth="800" GraphHeight="400" ViewModel="{Binding ShadedBarGraphViewModel}" IsVisible="{Binding ShadedBarGraph}"/>
+        <contentviews:PointGraphView GraphWidth="800" GraphHeight="400" ViewModel="{Binding PointGraphViewModel}" IsVisible="{Binding PointGraph}"/>
+        <contentviews:MultiLineGraphView GraphWidth="800" GraphHeight="400" ViewModel="{Binding MultiLineGraphViewModel}" IsVisible="{Binding MultiLineGraph}"/>
+        <contentviews:ShadedMultiLineGraphView GraphWidth="800" GraphHeight="400" ViewModel="{Binding ShadedMultiLineGraphViewModel}" IsVisible="{Binding ShadedMultiLineGraph}"/>
+        <contentviews:ShadedLineGraphView GraphWidth="800" GraphHeight="400" ViewModel="{Binding ShadedStepGraphViewModel}" IsVisible="{Binding ShadedStepGraph}"/>
+        <ScrollView IsVisible="{Binding ShowButtons}">
+            <StackLayout>
+                <Button Text="Horizontal Bar Graph" Command="{Binding ShowGraphCommand}" CommandParameter="HorizontalBarGraph"/>
+                <Button Text="Line Graph" Command="{Binding ShowGraphCommand}" CommandParameter="LineGraph"/>
+                <Button Text="Line Graph With Left Label" Command="{Binding ShowGraphCommand}" CommandParameter="LineGraphLeftLabel"/>
+                <Button Text="Line Graph With Footers" Command="{Binding ShowGraphCommand}" CommandParameter="LineGraphWithFooters"/>
+                <Button Text="Line Graph With Multi-Line Header" Command="{Binding ShowGraphCommand}" CommandParameter="LineGraphWithMultiLineHeader"/>
+                <Button Text="Step Graph" Command="{Binding ShowGraphCommand}" CommandParameter="StepGraph"/>
+                <Button Text="Bar Graph" Command="{Binding ShowGraphCommand}" CommandParameter="BarGraph"/>
+                <Button Text="Shaded Line Graph" Command="{Binding ShowGraphCommand}" CommandParameter="ShadedLineGraph"/>
+                <Button Text="Shaded Bar Graph" Command="{Binding ShowGraphCommand}" CommandParameter="ShadedBarGraph"/>
+                <Button Text="Point Graph" Command="{Binding ShowGraphCommand}" CommandParameter="PointGraph"/>
+                <Button Text="Multi-Line Graph" Command="{Binding ShowGraphCommand}" CommandParameter="MultiLineGraph"/>
+                <Button Text="Shaded Multi-Line Graph" Command="{Binding ShowGraphCommand}" CommandParameter="ShadedMultiLineGraph"/>
+                <Button Text="Shaded Step Graph" Command="{Binding ShowGraphCommand}" CommandParameter="ShadedStepGraph"/>
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
+
+</ContentPage>

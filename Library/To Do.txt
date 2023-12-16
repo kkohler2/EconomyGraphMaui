@@ -1,0 +1,24 @@
+﻿Bar/Line Graph
+=================
+Optional labels anywhere on graph
+Legend
+
+
+For readme:
+Set Header Bold
+Set Header Color
+Multi-line Header
+Footer
+Horizontal Lines
+Vertical Lines
+Horizontal Shading
+Vertical Shading
+Define Bottom value
+Define Top value
+Optional color for specific Bars, distinct from other bar colors (i.e. hilight one bar in specific color to stand out)
+Display (optional) labels near data points on graph
+Optional Circles for data points
+Multi-line data group labels.
+Data indicator lines
+X-Axis label rotation options
+Nullable data values for graphs
