@@ -62,6 +62,10 @@
     </None>
   </ItemGroup>
 
+  <PropertyGroup>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <!-- Reference this package to enable SourceLink used with the source control GitHub -->
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All">
@@ -72,5 +76,13 @@
       <RepositoryType>git</RepositoryType>
     </PackageReference>
   </ItemGroup>
+
+  <PropertyGroup>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>  
 
 </Project>
