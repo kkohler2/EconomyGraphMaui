@@ -1,6 +1,5 @@
 ﻿using EconomyGraph.Models;
 using SkiaSharp;
-using System.Collections.Generic;
 
 namespace EconomyGraph.ViewModels
 {
@@ -32,7 +31,7 @@ namespace EconomyGraph.ViewModels
         /// <summary>
         /// If true and displaying horizontal lines, they start at left edit of canvas, i.e. under label.  If false, they start at edit of graph.
         /// </summary>
-        public bool HorizontalLinesStartAtEdge = true;
+        public bool HorizontalLinesStartAtEdge { get; set; } = true;
         public SKColor? HorizontalLineColor { get; set; }
         /// <summary>
         /// Set HorizontalBottomLineColor to draw X-Axis line at bottom of graph.  This will override first bottom horizontal line, if horizontal lines are 

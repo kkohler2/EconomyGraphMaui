@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:EconomyGraphTest.ViewModels"
              xmlns:contentviews="clr-namespace:EconomyGraph.Views.ContentViews;assembly=EconomyGraphMaui"
              x:Class="EconomyGraphMauiTest.MainPage">
 
-    <StackLayout VerticalOptions="Start" Padding="0,50,0,0">
+    <StackLayout VerticalOptions="Start" Padding="0,50,0,0" x:DataType="viewmodels:MainPageViewModel">
         <Button Text="Hide Graph" Command="{Binding HideGraphCommand}" IsVisible="{Binding ShowHideButton}"/>
         <contentviews:HorizontalBarGraphView GraphWidth="800" GraphHeight="400" ViewModel="{Binding HorizontalBarGraphViewModel}" IsVisible="{Binding HorizontalBarGraph}" />
         <contentviews:LineGraphView GraphWidth="800" GraphHeight="400" ViewModel="{Binding LineGraphViewModel}" IsVisible="{Binding LineGraph}"/>

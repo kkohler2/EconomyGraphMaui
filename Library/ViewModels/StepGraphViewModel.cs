@@ -1,6 +1,5 @@
 ﻿using EconomyGraph.Models;
 using SkiaSharp;
-using System.Collections.Generic;
 
 namespace EconomyGraph.ViewModels
 {

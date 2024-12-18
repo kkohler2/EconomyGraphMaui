@@ -1871,6 +1871,7 @@ namespace EconomyGraphTest.ViewModels
                                     new DataPoint{Value = 1.54,IndicatorLine = true},
                                     new DataPoint{Value = 1.52,IndicatorLine = true},
                                     new DataPoint{Value = 1.5,IndicatorLine = true},
+                                    new EmptyDataPoint{ IndicatorLine = true },
                                 }
                             },
                             new Line
@@ -1883,6 +1884,7 @@ namespace EconomyGraphTest.ViewModels
                                     new DataPoint{Value = 1.74},
                                     new DataPoint{Value = 1.73},
                                     new DataPoint{Value = 1.73},
+                                    new EmptyDataPoint{ IndicatorLine = true },
                                 }
                             },
                             new Line
@@ -1895,6 +1897,7 @@ namespace EconomyGraphTest.ViewModels
                                     new DataPoint{Value = 1.96},
                                     new DataPoint{Value = 1.94},
                                     new DataPoint{Value = 1.94},
+                                    new EmptyDataPoint{ IndicatorLine = true },
                                 }
                             },
                             new Line
@@ -1907,6 +1910,7 @@ namespace EconomyGraphTest.ViewModels
                                     new DataPoint{Value = 2.28},
                                     new DataPoint{Value = 2.31},
                                     new DataPoint{Value = 2.35},
+                                    new EmptyDataPoint{ IndicatorLine = true },
                                 }
                             }
                         }
