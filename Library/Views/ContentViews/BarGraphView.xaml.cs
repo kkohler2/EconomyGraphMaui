@@ -20,6 +20,9 @@ namespace EconomyGraph.Views.ContentViews
 
         protected override void GraphData(float padding, List<IGraphItem> graphItems, float xPos, float yPos, double minimum, List<IDataPoint> dataPoints, float labelWidth, float graphHeight, float barWidth, double minimumGraphValue, double maximumGraphValue, List<decimal> hValues, float ySectionHeight, float zeroYPos, float scale)
         {
+            if (ViewModel == null)
+                return;
+
             var calculatedBarWidth = barWidth; // for bar spacing
             BarGraphViewModel viewModel = ViewModel as BarGraphViewModel;
             if (viewModel.BarDefaultWidth.HasValue && viewModel.BarDefaultWidth.Value < barWidth && viewModel.BarDefaultWidth.Value > 0)
@@ -96,7 +99,6 @@ namespace EconomyGraph.Views.ContentViews
                         range = 0 - minimumGraphValue;
                         minimumBarValue = 0;
                     }
-                    float percent = Convert.ToSingle((dataPoint.Value - minimumBarValue) / range);
                     float barHeight = Convert.ToSingle(barRange * (dataPoint.Value - minimumBarValue) / range);
                     float offset = 0;
                     if (zeroIndex != -1)

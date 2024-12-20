@@ -9,13 +9,13 @@ namespace EconomyGraph.Views.ContentViews
     public partial class HorizontalBarGraphView : ContentView
     {
         public static readonly BindableProperty GraphWidthProperty =
-            BindableProperty.Create("GraphWidth", typeof(double), typeof(HorizontalBarGraphView), null, BindingMode.OneTime);
+            BindableProperty.Create("GraphWidth", typeof(double), typeof(HorizontalBarGraphView), null, BindingMode.OneWay);
 
         public static readonly BindableProperty GraphHeightProperty =
-            BindableProperty.Create("GraphHeight", typeof(double), typeof(HorizontalBarGraphView), null, BindingMode.OneTime);
+            BindableProperty.Create("GraphHeight", typeof(double), typeof(HorizontalBarGraphView), null, BindingMode.OneWay);
 
         public static readonly BindableProperty ViewModelProperty =
-            BindableProperty.Create("ViewModel", typeof(HorizontalBarGraphViewModel), typeof(HorizontalBarGraphView), null, BindingMode.OneTime);
+            BindableProperty.Create("ViewModel", typeof(HorizontalBarGraphViewModel), typeof(HorizontalBarGraphView), null, BindingMode.OneWay);
 
         public double GraphWidth
         {
@@ -44,6 +44,9 @@ namespace EconomyGraph.Views.ContentViews
 
         private void PaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
+            if (ViewModel == null)
+                return;
+
             float width = e.Info.Width;
             float height = e.Info.Height;
             float scale = height / (float)GraphHeight;

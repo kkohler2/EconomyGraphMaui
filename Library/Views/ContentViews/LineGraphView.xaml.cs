@@ -10,13 +10,13 @@ namespace EconomyGraph.Views.ContentViews
     {
         #region Bindings
         public static readonly BindableProperty GraphWidthProperty =
-            BindableProperty.Create("GraphWidth", typeof(double), typeof(LineGraphView), null, BindingMode.OneTime);
+            BindableProperty.Create("GraphWidth", typeof(double), typeof(LineGraphView), null, BindingMode.OneWay);
 
         public static readonly BindableProperty GraphHeightProperty =
-            BindableProperty.Create("GraphHeight", typeof(double), typeof(LineGraphView), null, BindingMode.OneTime);
+            BindableProperty.Create("GraphHeight", typeof(double), typeof(LineGraphView), null, BindingMode.OneWay);
 
         public static readonly BindableProperty ViewModelProperty =
-            BindableProperty.Create("ViewModel", typeof(LineGraphViewModel), typeof(LineGraphView), null, BindingMode.OneTime);
+            BindableProperty.Create("ViewModel", typeof(LineGraphViewModel), typeof(LineGraphView), null, BindingMode.OneWay);
 
         public double GraphWidth
         {
@@ -33,7 +33,7 @@ namespace EconomyGraph.Views.ContentViews
         public LineGraphViewModel ViewModel
         {
             get { return (LineGraphViewModel)GetValue(ViewModelProperty); }
-            set { SetValue(GraphHeightProperty, value); }
+            set { SetValue(ViewModelProperty, value); }
         }
         #endregion
 
@@ -51,6 +51,9 @@ namespace EconomyGraph.Views.ContentViews
 
         protected virtual void PaintGraph(SKPaintSurfaceEventArgs e)
         {
+            if (ViewModel == null)
+                return;
+
             #region Define/Initialize Variables
             float canvasWidth = e.Info.Width;
             float canvasHeight = e.Info.Height;
@@ -220,6 +223,7 @@ namespace EconomyGraph.Views.ContentViews
                     {
                         xDP += pointWidth;
                     }
+                    GraphCircle(graphItems, scale, dataPoint, xDP, yPos + padding + yDP);
                 }
                 else
                 {
@@ -274,32 +278,7 @@ namespace EconomyGraph.Views.ContentViews
                             graphItems.Add(graphLine);
                         }
                     }
-                    var lineDataPoint = dataPoint as LineDataPoint;
-                    if (lineDataPoint != null && lineDataPoint.CircleType != CircleType.None)
-                    {
-                        float strokeWidth = 3;
-                        graphItems.Add(new GraphCircle
-                        {
-                            Color = dataPoint.Color != null ? dataPoint.Color.Value : ViewModel.LineColor,
-                            XPos = graphLine.XPosEnd,
-                            YPos = graphLine.YPosEnd,
-                            Radius = lineDataPoint.CircleRadius * scale,
-                            PaintStyle = SKPaintStyle.Fill,
-                            StrokeWidth = strokeWidth,
-                        });
-                        if (lineDataPoint.CircleType == CircleType.Donut)
-                        {
-                            graphItems.Add(new GraphCircle
-                            {
-                                Color = ViewModel.BackgroundColor.HasValue ? ViewModel.BackgroundColor.Value : SKColors.White,
-                                XPos = graphLine.XPosEnd,
-                                YPos = graphLine.YPosEnd,
-                                Radius = (lineDataPoint.CircleRadius - strokeWidth) * scale,
-                                PaintStyle = SKPaintStyle.Fill,
-                                StrokeWidth = strokeWidth,
-                            });
-                        }
-                    }
+                    GraphCircle(graphItems, scale, dataPoint, graphLine.XPosEnd, graphLine.YPosEnd);
                     if (dataPoint.Label != null)
                     {
                         graphItems.Add(new GraphText
@@ -341,6 +320,36 @@ namespace EconomyGraph.Views.ContentViews
                     });
                 }
                 previousDataPoint = dataPoint;
+            }
+        }
+
+        private void GraphCircle(List<IGraphItem> graphItems, float scale, IDataPoint dataPoint, float xPos, float yPos)
+        {
+            var lineDataPoint = dataPoint as LineDataPoint;
+            if (lineDataPoint != null && lineDataPoint.CircleType != CircleType.None)
+            {
+                float strokeWidth = 3;
+                graphItems.Add(new GraphCircle
+                {
+                    Color = dataPoint.Color != null ? dataPoint.Color.Value : ViewModel.LineColor,
+                    XPos = xPos,
+                    YPos = yPos,
+                    Radius = lineDataPoint.CircleRadius * scale,
+                    PaintStyle = SKPaintStyle.Fill,
+                    StrokeWidth = strokeWidth,
+                });
+                if (lineDataPoint.CircleType == CircleType.Donut)
+                {
+                    graphItems.Add(new GraphCircle
+                    {
+                        Color = ViewModel.BackgroundColor.HasValue ? ViewModel.BackgroundColor.Value : SKColors.White,
+                        XPos = xPos,
+                        YPos = yPos,
+                        Radius = (lineDataPoint.CircleRadius - strokeWidth) * scale,
+                        PaintStyle = SKPaintStyle.Fill,
+                        StrokeWidth = strokeWidth,
+                    });
+                }
             }
         }
 
@@ -717,9 +726,10 @@ namespace EconomyGraph.Views.ContentViews
 
         protected virtual float SetTitle(float canvasWidth, float scale, List<IGraphItem> graphItems, float padding)
         {
-            float yPos = padding;
+            float yPos = 0;
             if (ViewModel.Title != null && !string.IsNullOrWhiteSpace(ViewModel.Title.Text))
             {
+                yPos = padding;
                 ViewModel.Title.Scale = scale;
                 float XPos = 0;
                 switch (ViewModel.Title.TextAlignment)
@@ -751,8 +761,8 @@ namespace EconomyGraph.Views.ContentViews
                     });
                     first = false;
                 }
+                yPos += padding;
             }
-            yPos += padding;
 
             return yPos;
         }
