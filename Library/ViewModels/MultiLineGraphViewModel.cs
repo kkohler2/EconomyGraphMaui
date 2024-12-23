@@ -38,7 +38,7 @@ namespace EconomyGraph.ViewModels
         /// displayed and will display be displayed, even if not using Horizontal Lines.
         /// </summary>
         public SKColor? HorizontalBottomLineColor { get; set; }
-        public decimal HorizontalLabelPrecision { get; set; }
+        public decimal VerticalLabelPrecision { get; set; }
         public TextAlignment XLabelAlignment { get; set; } = TextAlignment.Start;
         /// <summary>
         /// To use shaded rows, set background color to color for "even" horizonal rows (w/ title being essentially row 0).

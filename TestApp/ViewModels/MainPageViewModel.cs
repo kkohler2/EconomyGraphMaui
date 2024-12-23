@@ -1796,7 +1796,7 @@ namespace EconomyGraphTest.ViewModels
                 YLabelAlignment = TextAlignment.Start,
                 YLabelColor = SKColors.Black,
                 YLabelPointSize = 20,
-                HorizontalLabelPrecision = 1M,
+                VerticalLabelPrecision = 1M,
                 BottomGraphValue = 1,
                 TopGraphValue = 2.5,
                 DataGroups = new List<MultiLineDataGroup>
@@ -1946,7 +1946,7 @@ namespace EconomyGraphTest.ViewModels
                 YLabelAlignment = TextAlignment.Start,
                 YLabelColor = SKColors.Black,
                 YLabelPointSize = 20,
-                HorizontalLabelPrecision = 1M,
+                VerticalLabelPrecision = 1M,
                 BottomGraphValue = 1,
                 TopGraphValue = 2.5,
                 DataGroups = new List<MultiLineDataGroup>

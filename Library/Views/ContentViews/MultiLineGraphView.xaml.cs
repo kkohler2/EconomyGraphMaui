@@ -687,7 +687,7 @@ namespace EconomyGraph.Views.ContentViews
             while (vValue <= (decimal)maximum)
             {
                 vValues.Add(Convert.ToDecimal(vValue));
-                vValue += ViewModel.HorizontalLabelPrecision;
+                vValue += ViewModel.VerticalLabelPrecision;
             }
             vValues.Add(Convert.ToDecimal(vValue));
             maximumGraphValue = Convert.ToDouble(vValue);
@@ -703,7 +703,7 @@ namespace EconomyGraph.Views.ContentViews
                         if (vValue <= Convert.ToDecimal(minimum)) 
                             break;
                     }
-                    vValue -= ViewModel.HorizontalLabelPrecision;
+                    vValue -= ViewModel.VerticalLabelPrecision;
                 }
             }
         }
