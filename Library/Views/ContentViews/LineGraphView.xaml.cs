@@ -44,6 +44,11 @@ namespace EconomyGraph.Views.ContentViews
             InitializeComponent();
         }
 
+        public void Invalidate()
+        {
+            this.canvas.InvalidateMeasure();
+        }
+
         private void PaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
             PaintGraph(e);

@@ -41,6 +41,10 @@ namespace EconomyGraph.Views.ContentViews
             graphEngine = new GraphEngine();
             InitializeComponent();
         }
+        public void Invalidate()
+        {
+            this.canvas.InvalidateMeasure();
+        }
 
         private void PaintSurface(object sender, SKPaintSurfaceEventArgs e)
         {
